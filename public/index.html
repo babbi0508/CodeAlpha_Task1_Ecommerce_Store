@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop quality everyday products at ShopNest.">
+  <title>ShopNest | Online Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="announcement">WELCOME TO SHOPNEST · FREE DELIVERY ON ORDERS ABOVE ₹1,999</div>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="ShopNest home"><span class="brand-mark">S</span> shopnest<span class="brand-dot">.</span></a>
+    <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search products..." aria-label="Search products"></div>
+    <nav class="header-actions">
+      <button class="text-button" id="favoritesButton" aria-label="Show favorite products">♡ Favorites <span id="favoritesCount">0</span></button>
+      <button class="text-button" id="ordersButton">My Orders</button>
+      <button class="text-button" id="accountButton">Login / Sign up</button>
+      <button class="cart-button" id="cartButton" aria-label="Open shopping cart">Bag <span id="cartCount">0</span></button>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> YOUR EVERYDAY, UPGRADED</p>
+        <h1>Good things.<br><span>Better living.</span></h1>
+        <p class="hero-description">Thoughtfully picked essentials for your everyday life. Discover something you'll love.</p>
+        <button class="primary-button" id="shopNow">Explore collection <span>↗</span></button>
+        <div class="hero-note"><span class="avatar-stack">● ● ●</span><span>Loved by shoppers, made for everyday.</span></div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-image"></div>
+        <div class="floating-card"><span class="sparkle">✳</span><div><strong>Little things</strong><small>Make a big difference.</small></div></div>
+        <div class="hero-number">01 <span>/ 04</span></div>
+      </div>
+    </section>
+    <section class="shop-section" id="shop">
+      <div class="section-heading">
+        <div><p class="eyebrow" id="shopEyebrow">THE SHOP</p><h2 id="shopTitle">Find your favourites<span class="brand-dot">.</span></h2></div>
+        <p class="section-subtitle" id="shopSubtitle">Everyday essentials, picked for you.</p>
+      </div>
+      <div class="category-row" id="categoryRow">
+        <button class="category-chip active" data-category="All">All products</button>
+        <button class="category-chip" data-category="Electronics">Electronics</button>
+        <button class="category-chip" data-category="Accessories">Accessories</button>
+        <button class="category-chip" data-category="Fashion">Fashion</button>
+        <button class="category-chip" data-category="Home">Home</button>
+        <button class="category-chip" data-category="Beauty">Beauty</button>
+        <button class="category-chip" data-category="Sports">Sports</button>
+        <button class="category-chip" data-category="Books">Books & Stationery</button>
+        <button class="category-chip" data-category="Kitchen">Kitchen</button>
+        <button class="category-chip" data-category="Toys">Toys</button>
+        <button class="category-chip" data-category="Office">Office</button>
+      </div>
+      <div class="product-grid" id="productGrid"><div class="loading">Finding your favourites...</div></div>
+      <div class="load-more-wrap"><button class="primary-button load-more-button" id="loadMoreProducts">Load more products ↓</button></div>
+    </section>
+    <section class="service-strip">
+      <div><span class="service-icon">↗</span><strong>Easy shopping</strong><small>Simple and smooth checkout</small></div>
+      <div><span class="service-icon">◇</span><strong>Quality picks</strong><small>Everyday essentials in one place</small></div>
+      <div><span class="service-icon">♡</span><strong>Here to help</strong><small>A better shopping experience</small></div>
+    </section>
+  </main>
+  <footer><a class="brand footer-brand" href="/"><span class="brand-mark">S</span> shopnest<span class="brand-dot">.</span></a><span>Made for your everyday. © <span id="year"></span> ShopNest</span><span class="footer-caption">A CodeAlpha Full Stack Project</span></footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer-header"><div><p class="eyebrow">YOUR BAG</p><h2>Shopping cart</h2></div><button class="icon-button" data-close aria-label="Close cart">×</button></div>
+    <div class="drawer-content" id="cartItems"></div>
+    <div class="drawer-footer" id="cartFooter"></div>
+  </aside>
+
+  <section class="modal wide-modal product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+    <button class="icon-button modal-close" data-close aria-label="Close">×</button>
+    <div id="productDetails"></div>
+  </section>
+
+  <section class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <button class="icon-button modal-close" data-close aria-label="Close">×</button>
+    <p class="eyebrow">WELCOME TO SHOPNEST</p><h2 id="authTitle">Good to see you<span class="brand-dot">.</span></h2>
+    <p class="modal-subtitle">Log in or create an account to place your order.</p>
+    <div class="auth-tabs"><button class="auth-tab active" data-mode="login">Login</button><button class="auth-tab" data-mode="register">Create account</button></div>
+    <form id="authForm">
+      <label id="nameLabel" class="hidden">Full name<input name="name" minlength="2" autocomplete="name" placeholder="Your name"></label>
+      <label>Email address<input name="email" type="email" required autocomplete="email" placeholder="you@example.com"></label>
+      <label>Password<input name="password" type="password" minlength="6" required autocomplete="current-password" placeholder="At least 6 characters"></label>
+      <p class="form-message" id="authMessage"></p><button class="primary-button full-button" type="submit" id="authSubmit">Login <span>→</span></button>
+    </form>
+  </section>
+
+  <section class="modal wide-modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <button class="icon-button modal-close" data-close aria-label="Close">×</button>
+    <p class="eyebrow">ALMOST YOURS</p><h2 id="checkoutTitle">Delivery details<span class="brand-dot">.</span></h2>
+    <p class="modal-subtitle">Fill in your details to place the order.</p>
+    <form id="checkoutForm">
+      <label>Full name<input name="fullName" required minlength="2" autocomplete="name" placeholder="Name for delivery"></label>
+      <label>Phone number<input name="phone" required minlength="8" maxlength="15" autocomplete="tel" placeholder="Your contact number"></label>
+      <label>Delivery address<textarea name="address" required minlength="8" rows="3" autocomplete="street-address" placeholder="House number, street, city, PIN code"></textarea></label>
+      <div class="checkout-total"><span>Order total</span><strong id="checkoutTotal">₹0</strong></div>
+      <p class="form-message" id="checkoutMessage"></p><button class="primary-button full-button" type="submit">Place order <span>→</span></button>
+      <p class="demo-note">Demo project: no real payment is collected.</p>
+    </form>
+  </section>
+
+  <section class="modal success-modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="success-icon">✓</div><p class="eyebrow">ORDER PLACED</p><h2 id="successTitle">It's on its way<span class="brand-dot">.</span></h2>
+    <p class="modal-subtitle" id="successText">Your order has been confirmed.</p><button class="primary-button full-button" id="continueShopping">Continue shopping <span>→</span></button>
+  </section>
+
+  <section class="modal wide-modal" id="ordersModal" role="dialog" aria-modal="true" aria-labelledby="ordersTitle">
+    <button class="icon-button modal-close" data-close aria-label="Close">×</button><p class="eyebrow">YOUR ACCOUNT</p><h2 id="ordersTitle">Your orders<span class="brand-dot">.</span></h2><div id="ordersList" class="orders-list"></div>
+  </section>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
